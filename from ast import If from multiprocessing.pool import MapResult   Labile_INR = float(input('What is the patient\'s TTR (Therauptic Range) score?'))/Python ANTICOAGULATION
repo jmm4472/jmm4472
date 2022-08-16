@@ -1,5 +1,4 @@
-
-
+PYTHON ALGORITHM FOR ANTICOAGULATION (DEFER/INITIATE)
 
 
 first_name = str(input('What is your First Name?'))
