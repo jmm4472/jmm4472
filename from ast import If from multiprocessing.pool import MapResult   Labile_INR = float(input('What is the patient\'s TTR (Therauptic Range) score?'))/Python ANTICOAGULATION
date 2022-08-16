@@ -1,0 +1,111 @@
+
+
+
+
+first_name = str(input('What is your First Name?'))
+last_name = str(input('What is your Last Name?'))
+Gender = str(input('What is the patient\'s sex?'))
+Age = int(input('What is the patient\'s age?'))
+Congestive_heart_failure = str(input('Does the patient suffer from Congestve Heart Failure?'))
+HyperTension = str(input('Does the patient suffer from HyperTension?'))
+Diabetes = str(input('Does the patient suffer from diabetes?'))
+Stroke = str(input('Has The patient suffered from a stroke?'))
+Vascular_Disease = str(input('Does the patient suffer from any vascular disease?'))
+Labile_INR = float(input('What is the patient\'s TTR (Therauptic Range) score?'))//100
+Abnormal_Renal = str(input('Does the patient suffer from an abnormal renal?'))
+Kidney_Function = str(input('Does the patient suffer from an abnormality in kidney function?'))
+Bleeding = str(input('Does the patient have a history or tendency of bleeding?'))
+
+Drugs = str(input('Does the patient have a history of using NSAID\'s or antiplatlets?'))
+Alcohol = str(input('Does the patient have a hostory of excessive alcohol drinking?'))
+
+CHADSVASC = 0
+HASBLED = 0
+
+if Congestive_heart_failure.upper() == "YES":
+    CHADSVASC= 1
+# +1
+
+
+if HyperTension.lower() == "yes":
+        CHADSVASC+= 1
+        HASBLED += 1
+
+# +1 and +1
+if Age >=75:
+     CHADSVASC+= 2
+     HASBLED +=1
+
+#+2 and +1
+elif 65 < Age < 74:
+    CHADSVASC += 1
+    HASBLED +=1
+
+#+1 and +1
+
+ #+0
+
+
+if Diabetes.lower() == "yes":
+    CHADSVASC+= 1
+
+#+1
+if Stroke.lower() == "yes":
+        CHADSVASC += 2
+        HASBLED +=1
+#+1
+if Vascular_Disease.lower() == "yes":
+    CHADSVASC += 1
+
+if Abnormal_Renal.lower() == 'yes':
+    HASBLED += 1
+
+if Kidney_Function.lower() == 'yes':
+    HASBLED += 1
+
+if Bleeding.lower() == 'yes':
+    HASBLED += 1
+
+if Labile_INR > 0.6:
+    HASBLED += 1
+
+if Drugs.lower() == 'yes':
+    HASBLED += 1
+
+if Alcohol.lower() == 'yes':
+     HASBLED += 1
+    
+
+
+
+
+
+
+if Gender.lower() == 'male':
+     
+    if CHADSVASC == 0:
+      print(f'The Patient MR. {first_name} {last_name} has a null thromboembolic risk score which means oral anticoagulation is not needed')
+    
+    if CHADSVASC == 1:
+        if HASBLED >= 3:
+            print(f'The Patient MR. {first_name} {last_name} has a thromboembolic risk score of {CHADSVASC} and a HIGH bleeding risk of {HASBLED} and requires oral anticoagulation')
+        if HASBLED <= 2:
+            print(f'The Patient MR. {first_name} {last_name} has a thromboembolic risk score of {CHADSVASC} and a LOW bleeding risk of {HASBLED} and does not require oral anticoagulation')
+    if CHADSVASC >= 2:
+         print(f' The Patient MR. {first_name} {last_name} has a thromboembolic risk score of {CHADSVASC} and requires oral anticoagulation')
+
+   
+if Gender.lower() == 'female': 
+      
+    if CHADSVASC == 1:
+        print(f'The Patient MRS. {first_name} {last_name} has a minimal thromboembolic risk score which means oral anticoagulation is not needed')
+    
+    if CHADSVASC == 2:
+        if HASBLED >= 3:
+            print(f'The Patient MRS. {first_name} {last_name} has a thromboembolic risk score of {CHADSVASC} and a HIGH bleeding risk of {HASBLED} and requires oral anticoagulation')
+        if HASBLED <= 2:
+            print(f'The Patient MRS. {first_name} {last_name} has a thromboembolic risk score of {CHADSVASC} and a LOW bleeding risk of {HASBLED} and does not require oral anticoagulation')
+    if CHADSVASC >= 3:
+         print(f' The Patient MRS. {first_name} {last_name} has a thromboembolic risk score of {CHADSVASC} and requires oral anticoagulation')
+
+
